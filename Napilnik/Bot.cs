@@ -8,7 +8,7 @@
         public Bot()
         {
             _target = new Player();
-            _weapon = new Weapon(49);
+            _weapon = new Weapon(5, 49);
         }
 
         public void OnSeePlayer() =>

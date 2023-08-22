@@ -5,9 +5,9 @@
         private readonly uint _damage;
         private uint _bulletsCount;
 
-        public Weapon(uint bulletsCount)
+        public Weapon(uint damage, uint bulletsCount)
         {
-            _damage = 5;
+            _damage = damage;
             _bulletsCount = bulletsCount;
         }
 
