@@ -9,8 +9,12 @@
 
         public bool CanFire => _clip.GetBulletsCount() > 0;
 
-        public void Fire(IDamageable target) =>
-            _clip.Fire(target);
+        public void Fire(IDamageable target)
+        {
+            Bullet bullet = _clip.GetBullet();
+
+            bullet.Attack(target);
+        }
 
         public void Reload(Clip clip) =>
             _clip = clip;

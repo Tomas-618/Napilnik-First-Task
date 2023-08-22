@@ -2,15 +2,10 @@
 {
     public class Bot
     {
-        private static readonly Random _random;
-
         private readonly Player _target;
         private readonly Weapon _weapon;
 
         private Stack<Clip> _clips;
-
-        static Bot() =>
-            _random = new Random();
 
         public Bot()
         {
@@ -35,7 +30,7 @@
             int minClips = 5;
             int maxClips = 10;
 
-            int clipsCount = _random.Next(minClips, maxClips + 1);
+            int clipsCount = UserUtils.GetRandomNumber(minClips, maxClips);
 
             var clips = new Stack<Clip>();
 

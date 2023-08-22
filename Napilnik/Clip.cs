@@ -3,7 +3,7 @@
     public class Clip
     {
         private readonly uint _maxBullets;
-        private Queue<Bullet> _bullets;
+        private Stack<Bullet> _bullets;
 
         public Clip(uint bulletsCount)
         {
@@ -14,18 +14,18 @@
         public int GetBulletsCount() =>
             _bullets.Count;
 
-        public void Fire(IDamageable target) =>
-            _bullets.Dequeue().Attack(target);
+        public Bullet GetBullet() =>
+            _bullets.Pop();
 
-        private Queue<Bullet> CreateBullets(uint bulletsCount)
+        private Stack<Bullet> CreateBullets(uint bulletsCount)
         {
-            var bullets = new Queue<Bullet>();
+            var bullets = new Stack<Bullet>();
 
             if (bulletsCount > _maxBullets)
                 throw new InvalidOperationException();
 
             for (int i = 0; i < bulletsCount; i++)
-                bullets.Enqueue(new Bullet());
+                bullets.Push(new Bullet());
 
             return bullets;
         }
