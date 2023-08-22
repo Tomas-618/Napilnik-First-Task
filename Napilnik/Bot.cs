@@ -20,7 +20,7 @@
                 _weapon.Fire(_target);
         }
 
-        public void Reload() =>
+        public void ReloadGun() =>
             _weapon.Reload(_clips.Pop());
 
         private Stack<Clip> CreateClips()
