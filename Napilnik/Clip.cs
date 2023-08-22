@@ -3,6 +3,7 @@
     public class Clip
     {
         private readonly uint _maxBullets;
+
         private Stack<Bullet> _bullets;
 
         public Clip(uint bulletsCount)
