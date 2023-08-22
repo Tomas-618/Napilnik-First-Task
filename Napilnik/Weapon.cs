@@ -2,27 +2,17 @@
 {
     public class Weapon
     {
-        private readonly uint _damage;
-        private uint _bulletsCount;
+        private Clip _clip;
 
-        public Weapon(uint bulletsCount)
-        {
-            _damage = 5;
-            _bulletsCount = bulletsCount;
-        }
+        public Weapon() =>
+            _clip = new Clip(49);
 
-        public bool CanFire => _bulletsCount > 0;
+        public bool CanFire => _clip.GetBulletsCount() > 0;
 
-        public void Fire(IDamageable target)
-        {
-            if (target == null)
-                throw new ArgumentNullException(nameof(target));
+        public void Fire(IDamageable target) =>
+            _clip.Fire(target);
 
-            while (CanFire)
-            {
-                _bulletsCount--;
-                target.TakeDamage(_damage);
-            }
-        }
+        public void Reload(Clip clip) =>
+            _clip = clip;
     }
 }
