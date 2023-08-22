@@ -7,7 +7,7 @@
         public Weapon() =>
             _clip = new Clip(49);
 
-        public bool CanFire => _clip.GetBulletsCount() > 0;
+        public bool CanFire => _clip.BulletsCount > 0;
 
         public void Fire(IDamageable target)
         {

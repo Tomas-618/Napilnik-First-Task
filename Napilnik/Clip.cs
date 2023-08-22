@@ -4,7 +4,7 @@
     {
         private readonly uint _maxBullets;
 
-        private Stack<Bullet> _bullets;
+        private List<Bullet> _bullets;
 
         public Clip(uint bulletsCount)
         {
@@ -12,21 +12,28 @@
             _bullets = CreateBullets(bulletsCount);
         }
 
-        public int GetBulletsCount() =>
-            _bullets.Count;
+        public int BulletsCount => _bullets.Count;
 
-        public Bullet GetBullet() =>
-            _bullets.Pop();
-
-        private Stack<Bullet> CreateBullets(uint bulletsCount)
+        public Bullet GetBullet()
         {
-            var bullets = new Stack<Bullet>();
+            if (BulletsCount == 0)
+                throw new InvalidOperationException();
+
+            Bullet bullet = _bullets[BulletsCount - 1];
+
+            _bullets.Remove(bullet);
+            return bullet;
+        }
+
+        private List<Bullet> CreateBullets(uint bulletsCount)
+        {
+            List<Bullet> bullets = new List<Bullet>();
 
             if (bulletsCount > _maxBullets)
                 throw new InvalidOperationException();
 
             for (int i = 0; i < bulletsCount; i++)
-                bullets.Push(new Bullet());
+                bullets.Add(new Bullet());
 
             return bullets;
         }
