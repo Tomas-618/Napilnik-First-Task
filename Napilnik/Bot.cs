@@ -2,22 +2,20 @@
 {
     public class Bot
     {
-        private readonly Player _target;
         private readonly Weapon _weapon;
 
         private List<Clip> _clips;
 
         public Bot()
         {
-            _target = new Player();
             _weapon = new Weapon();
             _clips = CreateClips();
         }
 
-        public void OnSeePlayer()
+        public void OnSeePlayer(Player target)
         {
             while (_weapon.CanFire)
-                _weapon.Fire(_target);
+                _weapon.Fire(target);
         }
 
         public void ReloadGun()
