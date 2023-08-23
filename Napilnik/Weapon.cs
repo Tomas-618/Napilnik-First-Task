@@ -11,7 +11,7 @@
 
         public void Fire(IDamageable target)
         {
-            Bullet bullet = _clip.GetBullet();
+            Bullet bullet = _clip.GiveBullet();
 
             bullet.Attack(target);
         }

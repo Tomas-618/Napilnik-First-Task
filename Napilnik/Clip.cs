@@ -14,7 +14,7 @@
 
         public int BulletsCount => _bullets.Count;
 
-        public Bullet GetBullet()
+        public Bullet GiveBullet()
         {
             if (BulletsCount == 0)
                 throw new InvalidOperationException();
